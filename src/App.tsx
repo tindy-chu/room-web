@@ -5,14 +5,17 @@ import { Toaster } from 'react-hot-toast';
 import Login from './screens/login';
 
 import themeJson from './assets/theme.json';
+import GlobalSpinner from './components/globalSpinner';
 
 export type TAppState = {
   theme: 'dark' | 'light';
+  loading: boolean;
   toggleTheme: () => void;
 };
 
 export const useAppStore = create<TAppState>((set) => ({
   theme: localStorage.getItem('theme') === 'light' ? 'light' : 'dark',
+  loading: false,
   toggleTheme: () => {
     set((state) => {
       const theme = state.theme === 'dark' ? 'light' : 'dark';
@@ -38,6 +41,7 @@ const App: React.FC = () => {
   return (
     <>
       <Login />
+      <GlobalSpinner />
       <Toaster />
     </>
   );
