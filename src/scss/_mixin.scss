@@ -1,0 +1,84 @@
+@import './_variable.scss';
+
+@mixin contentSize {
+  padding-top: $headerHeight;
+  height: 100%;
+  width: 95%;
+  max-width: 128rem;
+}
+
+@mixin imageText($image) {
+  background-image: $image;
+  color: transparent;
+  background-clip: text;
+}
+
+@mixin center($top: 50%, $left: 50%) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: translate(-50%, -50%);
+}
+
+@mixin fontTranslate($x, $y, $size: 0.85, $unit: 'viewport') {
+  font-size: #{$size}rem;
+  @if $unit == 'viewport' {
+    transform: translate(#{$x}vw, #{$y}vh);
+  } @else {
+    transform: translate(#{$x}#{$unit}, #{$y}#{$unit});
+  }
+}
+
+@mixin a {
+  a,
+  a:link,
+  a:visited,
+  a:active,
+  a:hover {
+    @content;
+  }
+}
+
+@mixin scrollAnimation($keyframe) {
+  animation: $keyframe 1s ease-in infinite;
+  animation-play-state: paused;
+  animation-delay: calc(var(--scroll) * -1s);
+}
+
+@mixin mobile {
+  @media only screen and (max-width: $bp-s), (hover: none) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: $bp-s) and (hover: hover) {
+    @content;
+  }
+}
+
+@mixin queryWidth($breakpoint, $limit: 'max') {
+  @if $breakpoint == l {
+    @media only screen and (#{$limit}-width: $bp-l) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == m {
+    @media only screen and (#{$limit}-width: $bp-m) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == s {
+    @media only screen and (#{$limit}-width: $bp-s) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == xs {
+    @media only screen and (#{$limit}-width: $bp-xs) {
+      @content;
+    }
+  }
+}

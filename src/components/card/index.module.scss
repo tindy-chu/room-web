@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-card-background);
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  filter: drop-shadow(5px 8px 16px #000000);
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--color-card-font);
+}
+
+.line {
+  background-color: var(--color-accent-secondary);
+  height: 1px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

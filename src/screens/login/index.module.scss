@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent-primary),
+    var(--color-primary)
+  );
+}
+
+.msg {
+  color: var(--color-font-primary);
+}
