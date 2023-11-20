@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { create } from 'zustand';
 import { Toaster } from 'react-hot-toast';
 
-import Login from './screens/login';
-
 import themeJson from './assets/theme.json';
 import GlobalSpinner from './components/globalSpinner';
+import AppRouter from './AppRouter';
 
 export type TAppState = {
   theme: 'dark' | 'light';
@@ -40,7 +39,7 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Login />
+      <AppRouter />
       <GlobalSpinner />
       <Toaster />
     </>
