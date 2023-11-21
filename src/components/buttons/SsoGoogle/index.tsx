@@ -1,6 +1,10 @@
 import React from 'react';
 import str from '../../../utils/str';
 
+import googleLogo from '../../../assets/google-logo.png';
+
+import styles from './index.module.scss';
+
 const SsoGoogle: React.FC = () => {
   const handleSuccess = async () => {
     // const url = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -20,7 +24,11 @@ const SsoGoogle: React.FC = () => {
     // window.location.href = `${url}?${new URLSearchParams(params)}`;
   };
 
-  return <button onClick={handleSuccess} />;
+  return (
+    <div className="btn" onClick={handleSuccess}>
+      <img src={googleLogo} className={styles.logo} alt="google-logo" />
+    </div>
+  );
 };
 
 export default SsoGoogle;

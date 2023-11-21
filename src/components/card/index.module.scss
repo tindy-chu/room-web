@@ -4,7 +4,7 @@
   background-color: var(--color-card-background);
   padding: 2.5rem;
   border-radius: 0.5rem;
-  filter: drop-shadow(5px 8px 16px #000000);
+  box-shadow: var(--card-shadow);
 }
 
 .title {

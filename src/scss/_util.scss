@@ -1,0 +1,30 @@
+.btn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+
+  position: relative;
+  padding: 1rem 1rem;
+  color: white;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  &:hover {
+    top: -2px;
+  }
+
+  &:active {
+    top: -1px;
+  }
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
