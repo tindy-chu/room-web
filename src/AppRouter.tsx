@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './screens/login';
-import OAuth2 from './screens/autho2';
+import OAuth2 from './screens/oauth2';
 
 export default function AppRouter() {
   return (
