@@ -1,18 +1,20 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import str from '../utils/str';
 
 export default function useAuth() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const isLogin = false;
   useEffect(() => {
     if (!isLogin) {
-      const realm = 'myrealm';
-      const url = `http://192.168.0.60:8080/realms/${realm}/protocol/openid-connect/auth`;
-      const redirectUri = `${str.getEnv('BACKEND_URL')}${str.getEnv(
-        'BACKEND_SSO_URI'
-      )}`;
-      console.log(redirectUri);
+      const iamUrl = str.getEnv('IAM_URL');
+      const realm = str.getEnv('IAM_REALM');
+      const backendUrl = str.getEnv('BACKEND_URL');
+      const backendSsoUri = str.getEnv('BACKEND_SSO_URI');
+      const url = `${iamUrl}/realms/${realm}/protocol/openid-connect/auth`;
+      const redirectUri = `${backendUrl}${backendSsoUri}`;
+
+      // console.log(redirectUri);
       const params = {
         scope: 'openid',
         response_type: 'code',
@@ -21,9 +23,15 @@ export default function useAuth() {
         client_id: str.getEnv('IAM_CLIENT_ID'),
       };
 
-      window.location.href = `${url}?${new URLSearchParams(params)}`;
+      const href = `${url}?${new URLSearchParams(params)}`;
+      console.log(
+        `*****START 374e55 ${Math.random().toString(32)} href*****\n`,
+        JSON.stringify(href),
+        '\n***** END ****'
+      );
+      // window.location.href = `${url}?${new URLSearchParams(params)}`;
 
-      navigate('/login');
+      // navigate('/login');
     }
   }, []);
 
