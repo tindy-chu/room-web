@@ -8,7 +8,7 @@ export default function useAuth() {
   useEffect(() => {
     if (!isLogin) {
       const realm = 'myrealm';
-      const url = `http://localhost:8080/realms/${realm}/protocol/openid-connect/auth`;
+      const url = `http://192.168.0.60:8080/realms/${realm}/protocol/openid-connect/auth`;
       const redirectUri = `${str.getEnv('BACKEND_URL')}${str.getEnv(
         'BACKEND_SSO_URI'
       )}`;
