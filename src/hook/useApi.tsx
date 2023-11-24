@@ -50,9 +50,9 @@ type TUseApiPrams<T> = {
   method: 'post' | 'get' | 'put' | 'delete';
   url: string;
   delayMs?: number;
-  mockData?: Object | T;
+  mockData?: object | T;
   isGlobalLoading?: boolean;
-  config?: AxiosRequestConfig<Object>;
+  config?: AxiosRequestConfig<object>;
   parse?: (data: unknown, params?: Partial<ParseParams>) => T;
 };
 

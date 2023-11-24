@@ -21,7 +21,7 @@ const SsoGoogle: React.FC = () => {
       redirect_uri: redirectUri,
       client_id: str.getEnv('GOOGLE_CREDENTIAL_CLIENT_ID'),
     };
-    
+
     window.location.href = `${url}?${new URLSearchParams(params)}`;
   };
 
