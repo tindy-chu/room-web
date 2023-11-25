@@ -17,7 +17,7 @@ export type TAppState = {
 };
 
 export const useAppStore = create<TAppState>((set) => ({
-  theme: localStorage.getItem('theme') === 'dark' ? 'dark' : 'light',
+  theme: localStorage.getItem('theme') === 'light' ? 'light' : 'dark',
   loading: false,
   toggleTheme: () => {
     set((state) => {

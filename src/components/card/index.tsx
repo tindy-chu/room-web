@@ -8,9 +8,9 @@ type CardProps = {
   containerStyle?: React.CSSProperties;
 };
 
-const Card: React.FC<CardProps> = ({ title, children, containerStyle }) => {
+const Card: React.FC<CardProps> = ({ title, children }) => {
   return (
-    <div className={styles.container} style={containerStyle}>
+    <div className={styles.container}>
       {title && (
         <>
           <p className={styles.title}>{title}</p>

@@ -1,0 +1,9 @@
+@import '../../../scss/_variable.scss';
+
+.container {
+  display: flex;
+  background-color: var(--color-secondary);
+  height: $headerHeight;
+  width: 100%;
+  align-items: center;
+}

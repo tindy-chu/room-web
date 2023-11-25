@@ -1,6 +1,7 @@
 import Card from '../../components/card';
 import { useGlobalSpinnerStore } from '../../components/globalSpinner';
 import str from '../../utils/str';
+
 import styles from './index.module.scss';
 import Logo from '/logo.png';
 export default function Login() {
