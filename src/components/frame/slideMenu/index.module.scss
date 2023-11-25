@@ -1,15 +1,22 @@
 @import '../../../scss/_variable.scss';
 
 .container {
+  position: absolute;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: var(--color-primary);
-  border-right: var(--color-border-primary);
   width: $leftWidth;
+  background-color: var(--color-low-light);
+  z-index: 1;
+  transition: all 0.3s ease-in;
+  transform: translateX(-$leftWidth);
+  border-right: var(--color-border-primary);
+  &.active {
+    transform: unset;
+  }
 }
 
-.headerContent {
+headerContent {
   display: flex;
   flex: 1;
   height: 100%;

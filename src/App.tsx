@@ -47,9 +47,9 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Toaster />
       <AppRouter />
       <GlobalSpinner />
+      <Toaster />
     </>
   );
 };
