@@ -10,10 +10,14 @@ export type TAppState = {
   theme: 'dark' | 'light';
   loading: boolean;
   toggleTheme: () => void;
+  user: {
+    alias: string;
+    email: string;
+  };
 };
 
 export const useAppStore = create<TAppState>((set) => ({
-  theme: localStorage.getItem('theme') === 'light' ? 'light' : 'dark',
+  theme: localStorage.getItem('theme') === 'dark' ? 'dark' : 'light',
   loading: false,
   toggleTheme: () => {
     set((state) => {
@@ -21,6 +25,10 @@ export const useAppStore = create<TAppState>((set) => ({
       localStorage.setItem('theme', theme);
       return { theme: theme };
     });
+  },
+  user: {
+    alias: '',
+    email: '',
   },
 }));
 
@@ -39,9 +47,9 @@ const App: React.FC = () => {
 
   return (
     <>
+      <Toaster />
       <AppRouter />
       <GlobalSpinner />
-      <Toaster />
     </>
   );
 };

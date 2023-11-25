@@ -1,16 +1,35 @@
 .container {
   display: flex;
-
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  height: 100svh;
   background: linear-gradient(
     to bottom,
     var(--color-accent-primary),
     var(--color-primary)
   );
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.logoContainer {
+  height: 25rem;
+  width: 25rem;
+  transform: translateY(-10rem);
+}
+
+.cardContainer {
+  transform: translateY(-8rem);
+}
+
+.logo {
+  max-height: 100%;
+  width: 100%;
 }
 
 .msg {

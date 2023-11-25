@@ -1,22 +1,15 @@
 import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import str from '../utils/str';
-import { useGlobalSpinnerStore } from '../components/globalSpinner';
+// import str from '../utils/str';
+// import { useGlobalSpinnerStore } from '../components/globalSpinner';
+import { useNavigate } from 'react-router-dom';
 
 export default function useAuth() {
-  const globalSpinnerStore = useGlobalSpinnerStore();
+  // const globalSpinnerStore = useGlobalSpinnerStore();
   const isLogin = localStorage.getItem('accessToken') !== null;
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (!isLogin) {
-      const backendUrl = str.getEnv('BACKEND_URL');
-      const backendSsoUri = str.getEnv('BACKEND_LOGIN_URI');
-      const href = `${backendUrl}/${backendSsoUri}`;
-
-      globalSpinnerStore.addId();
-      window.location.href = href;
+      navigate('/login');
     }
   }, []);
-
-  return { isLogin };
 }

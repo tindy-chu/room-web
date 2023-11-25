@@ -1,8 +1,0 @@
-@import '../../../scss/_mixin.scss';
-
-.logo {
-  @include noSelect;
-
-  max-height: 3rem;
-  width: 3rem;
-}
