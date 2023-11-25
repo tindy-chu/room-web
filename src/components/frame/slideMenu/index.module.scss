@@ -6,7 +6,6 @@
   flex-direction: column;
   height: 100vh;
   width: $leftWidth;
-  background-color: var(--color-low-light);
   z-index: 1;
   transition: all 0.3s ease-in;
   transform: translateX(-$leftWidth);
@@ -16,18 +15,12 @@
   }
 }
 
-headerContent {
+.headerContent {
   display: flex;
   flex: 1;
   height: 100%;
   align-items: center;
   padding: 0.5rem;
-}
-
-.headerBtnGroup {
-  display: flex;
-  justify-content: end;
-  flex: 1;
 }
 
 .headerBtn {
@@ -49,4 +42,9 @@ headerContent {
 .headerIcon {
   max-height: 2.8rem;
   width: 2.8rem;
+}
+
+.headerTitle {
+  font-size: 2rem;
+  color: var(--color-font-secondary);
 }

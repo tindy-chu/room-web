@@ -4,16 +4,16 @@ import Header from '../header';
 import styles from './index.module.scss';
 import MoreLight from '../../../assets/more-light.svg';
 import MoreDark from '../../../assets/more-dark.svg';
-import FriendLight from '../../../assets/friend-light.svg';
-import FriendDark from '../../../assets/friend-dark.svg';
+import UserLight from '../../../assets/user-light.svg';
+import UserDark from '../../../assets/user-dark.svg';
 import { useAppStore } from '../../../App';
 import { useFrameStore } from '..';
 
 export default function LeftSideBar() {
-  const appStore = useAppStore();
+  const appTheme = useAppStore((state) => state.theme);
   const frameStore = useFrameStore();
-  const friendSvg = appStore.theme === 'dark' ? FriendDark : FriendLight;
-  const moreSvg = appStore.theme === 'dark' ? MoreDark : MoreLight;
+  const UserSvg = appTheme === 'dark' ? UserDark : UserLight;
+  const moreSvg = appTheme === 'dark' ? MoreDark : MoreLight;
 
   const handleFriendClick = () => {
     frameStore.toggleSlideMenuVisible();
@@ -26,7 +26,7 @@ export default function LeftSideBar() {
           <div className={styles.headerBtnGroup}>
             <button className={styles.headerBtn} onClick={handleFriendClick}>
               <img
-                src={friendSvg}
+                src={UserSvg}
                 className={styles.headerIcon}
                 draggable="false"
               />

@@ -33,17 +33,17 @@ export const useAppStore = create<TAppState>((set) => ({
 }));
 
 const App: React.FC = () => {
-  const appStore = useAppStore();
+  const appTheme = useAppStore((state) => state.theme);
 
   useEffect(() => {
-    const theme = themeJson[appStore.theme];
+    const theme = themeJson[appTheme];
     Object.keys(theme).forEach((key) => {
       document.documentElement.style.setProperty(
         key,
         theme[key as keyof typeof theme]
       );
     });
-  }, [appStore.theme]);
+  }, [appTheme]);
 
   return (
     <>

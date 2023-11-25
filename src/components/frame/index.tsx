@@ -6,11 +6,13 @@ import SlideMenu from './slideMenu';
 
 export type TFrameStore = {
   slideMenuVisible: boolean;
+  slideMenuType: 'userList' | 'settingList';
   toggleSlideMenuVisible: () => void;
 };
 
 export const useFrameStore = create<TFrameStore>((set) => ({
   slideMenuVisible: false,
+  slideMenuType: 'userList',
   toggleSlideMenuVisible: () => {
     set((state) => {
       return { slideMenuVisible: !state.slideMenuVisible };

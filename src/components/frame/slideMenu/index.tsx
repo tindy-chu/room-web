@@ -5,16 +5,18 @@ import arrowLight from '../../../assets/arrow-light.svg';
 import arrowDark from '../../../assets/arrow-dark.svg';
 import styles from './index.module.scss';
 import { useAppStore } from '../../../App';
+import SlideMenuContent from './content';
 
 export default function SlideMenu() {
-  const appStore = useAppStore();
+  const appTheme = useAppStore((state) => state.theme);
   const frameStore = useFrameStore();
 
   const handleHide = () => {
     frameStore.toggleSlideMenuVisible();
   };
 
-  const arrowSvg = appStore.theme === 'dark' ? arrowDark : arrowLight;
+  const arrowSvg = appTheme === 'dark' ? arrowDark : arrowLight;
+
   const containerClassName = [
     styles.container,
     frameStore.slideMenuVisible && styles.active,
@@ -23,11 +25,20 @@ export default function SlideMenu() {
   return (
     <div className={containerClassName}>
       <Header>
-        <div className={styles.headerBtn} onClick={handleHide}>
-          <img src={arrowSvg} className={styles.headerIcon} draggable={false} />
+        <div className={styles.headerContent}>
+          <div className={styles.headerBtn} onClick={handleHide}>
+            <img
+              src={arrowSvg}
+              className={styles.headerIcon}
+              draggable={false}
+            />
+          </div>
+          <div>
+            <p className={styles.headerTitle}>New Chat</p>
+          </div>
         </div>
       </Header>
-      <p>sss</p>
+      <SlideMenuContent />
     </div>
   );
 }
