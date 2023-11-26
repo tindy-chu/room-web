@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 type TInfoRowProps = {
   leftComponent: ReactNode;
-  onClick?: (id: string) => void;
+  onClick?: () => void;
   title?: string;
   desc?: string;
 };
@@ -17,7 +17,7 @@ export default function InfoRow({
   const containerName = [styles.container, onClick && styles.hover].join(' ');
 
   return (
-    <div className={containerName}>
+    <div className={containerName} onClick={onClick}>
       <div className={styles.leftComponent}>{LeftComponent}</div>
       <div className={styles.content}>
         <div className={styles.titleContainer}>

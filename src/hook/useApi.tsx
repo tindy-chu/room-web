@@ -113,11 +113,7 @@ const useApi = <T,>(
       if (options.parse && tmpResponse) {
         tmpResponse.data = options.parse(tmpResponse.data);
       }
-      console.log(
-        `*****START d434d4 ${Math.random().toString(32)} tmpResponse*****\n`,
-        JSON.stringify(tmpResponse),
-        '\n***** END ****'
-      );
+
       setResponse(tmpResponse);
     } catch (e: unknown) {
       if (e instanceof AxiosError) {

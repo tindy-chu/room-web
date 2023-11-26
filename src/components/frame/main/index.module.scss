@@ -6,3 +6,15 @@
   background-color: var(--color-primary);
   flex: 1;
 }
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: var(--color-font-primary);
+}

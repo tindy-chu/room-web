@@ -10,6 +10,7 @@ export const zUser = z.object({
   updated_at: z.string(),
   deleted_at: z.string().nullable(),
 });
+export type TZUser = z.infer<typeof zUser>;
 
 export const zUserList = z.array(zUser);
 export type TZUserList = z.infer<typeof zUserList>;

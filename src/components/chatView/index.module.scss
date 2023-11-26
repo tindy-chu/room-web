@@ -1,0 +1,44 @@
+@import '../../scss/_variable.scss';
+.container {
+  display: flex;
+  flex-direction: column;
+  height: $contentHeight;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column-reverse;
+  height: $contentHeight;
+}
+
+.sender {
+  display: flex;
+  height: 10%;
+  background-color: var(--color-secondary);
+  padding: 2rem;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  background-color: var(--color-low-light);
+  color: var(--color-font-primary);
+  border-radius: 0.8rem;
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+.sendBtn {
+  height: 3rem;
+  max-width: 5rem;
+  margin-left: 1.5rem;
+  cursor: pointer;
+  // &:active {
+  //   background-color: red;
+  // }
+}
+
+.sendImg {
+  height: 100%;
+  width: 100%;
+}
