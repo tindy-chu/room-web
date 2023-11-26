@@ -24,24 +24,22 @@ export default function SlideMenu() {
 
   return (
     <div className={containerClassName}>
-      <div className={styles.subClassName}>
-        <Header>
-          <div className={styles.headerContent}>
-            <div className={styles.headerBtn} onClick={handleHide}>
-              <img
-                src={arrowSvg}
-                className={styles.headerIcon}
-                draggable={false}
-              />
-            </div>
-            <div>
-              <p className={styles.headerTitle}>New Chat</p>
-            </div>
+      <Header>
+        <div className={styles.headerContent}>
+          <div className={styles.headerBtn} onClick={handleHide}>
+            <img
+              src={arrowSvg}
+              className={styles.headerIcon}
+              draggable={false}
+            />
           </div>
-        </Header>
+          <div>
+            <p className={styles.headerTitle}>New Chat</p>
+          </div>
+        </div>
+      </Header>
 
-        <UserList />
-      </div>
+      <UserList />
     </div>
   );
 }

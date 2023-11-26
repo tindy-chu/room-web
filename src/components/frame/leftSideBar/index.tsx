@@ -8,15 +8,31 @@ import UserLight from '../../../assets/user-light.svg';
 import UserDark from '../../../assets/user-dark.svg';
 import { useAppStore } from '../../../App';
 import { useFrameStore } from '..';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LeftSideBar() {
   const appTheme = useAppStore((state) => state.theme);
   const frameStore = useFrameStore();
+  const navigation = useNavigate();
+
   const UserSvg = appTheme === 'dark' ? UserDark : UserLight;
   const moreSvg = appTheme === 'dark' ? MoreDark : MoreLight;
 
+  const [moreVisible, setMoreVisible] = useState(false);
+
+  const toggleMoreVisible = () => {
+    setMoreVisible((state) => !state);
+  };
+
   const handleFriendClick = () => {
     frameStore.toggleSlideMenuVisible();
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    navigation('/login');
   };
 
   return (
@@ -31,13 +47,20 @@ export default function LeftSideBar() {
                 draggable="false"
               />
             </button>
-            <button className={styles.headerBtn}>
-              <img
-                src={moreSvg}
-                className={styles.headerIcon}
-                draggable="false"
-              />
-            </button>
+            <div className={styles.moreParent}>
+              <button className={styles.headerBtn} onClick={toggleMoreVisible}>
+                <img
+                  src={moreSvg}
+                  className={styles.headerIcon}
+                  draggable="false"
+                />
+              </button>
+              {moreVisible && (
+                <div className={styles.moreContainer} onClick={handleLogout}>
+                  <p>Logout</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Header>
