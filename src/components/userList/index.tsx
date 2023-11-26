@@ -7,9 +7,10 @@ import { useEffect } from 'react';
 import { create } from 'zustand';
 import useApi from '../../hook/useApi';
 import str from '../../utils/str';
-import Spinner from '../spinner';
 import { TZUserList, TZUserListResponse, zUserListResponse } from './type';
 import system from '../../utils/system';
+import Spinner from '../spinner';
+
 export type TUserListState = {
   list: TZUserList;
   appendList: (list: TZUserList) => void;
@@ -55,15 +56,18 @@ export default function UserList() {
     <div className={styles.container}>
       {api.loading && <Spinner />}
 
-      {!api.loading &&
-        userList.map((user) => (
-          <InfoRow
-            key={user.id}
-            leftComponent={<Avatar src={AvatarImg} />}
-            onClick={() => {}}
-            title={user.email}
-          />
-        ))}
+      {!api.loading && (
+        <div className={styles.subContainer}>
+          {userList.map((user) => (
+            <InfoRow
+              key={user.id}
+              leftComponent={<Avatar src={AvatarImg} />}
+              onClick={() => {}}
+              title={user.email}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

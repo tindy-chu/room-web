@@ -7,6 +7,17 @@
   width: 100%;
 }
 
+.subContainer {
+  height: calc(100vh - 6rem - 5rem);
+  overflow-y: auto;
+  width: 100%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .row {
   display: flex;
   flex-direction: row;
