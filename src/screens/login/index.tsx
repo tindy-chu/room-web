@@ -24,7 +24,7 @@ export default function Login() {
         <div className={styles.cardContainer}>
           <Card title="Sign Up or Log in">
             <div className="btn" onClick={handleClick}>
-              <p className={styles.msg}>Let'sChat</p>
+              <p className={styles.msg}>Let's Chat</p>
             </div>
           </Card>
         </div>

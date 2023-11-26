@@ -5,7 +5,9 @@ import arrowLight from '../../../assets/arrow-light.svg';
 import arrowDark from '../../../assets/arrow-dark.svg';
 import styles from './index.module.scss';
 import { useAppStore } from '../../../App';
-import SlideMenuContent from './content';
+// import SearchBar from '../../searchBar';
+import UserList from '../../userList';
+import SearchBar from '../../searchBar';
 
 export default function SlideMenu() {
   const appTheme = useAppStore((state) => state.theme);
@@ -38,7 +40,9 @@ export default function SlideMenu() {
           </div>
         </div>
       </Header>
-      <SlideMenuContent />
+
+      <SearchBar />
+      <UserList />
     </div>
   );
 }

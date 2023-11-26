@@ -5,4 +5,5 @@ $bp-s: 37.5em;
 $bp-xs: 31.25em;
 
 $headerHeight: 6rem;
+$contentHeight: calc(100vh - $headerHeight);
 $leftWidth: 44rem;

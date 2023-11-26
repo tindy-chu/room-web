@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { ParseParams } from 'zod';
 import { useGlobalSpinnerStore } from '../components/globalSpinner';
 import system from '../utils/system';
-// import { useState } from 'react';
-// import { ParseParams } from 'zod';
 
 axios.defaults.paramsSerializer = {
   ...axios.defaults.paramsSerializer,
@@ -16,39 +14,30 @@ axios.defaults.paramsSerializer = {
       skipNulls: true,
     }),
 };
-axios.defaults.headers.head['Content-Type'] =
-  'application/x-www-form-urlencoded';
+axios.defaults.headers.head['Content-Type'] = 'application/json';
 
 axios.interceptors.request.use(
   async (config) => {
-    const accessToken = localStorage.getItem('access_token');
-    if (accessToken) {
-      config.headers['Content-Type'] =
-        config.headers['Content-Type'] || 'application/json';
-      config.headers['Authorization'] = 'Bearer ' + accessToken;
-      config.headers['Access-Control-Allow-Origin'] = '*';
-    } else {
-      config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-    }
-
-    for (const key in config.params) {
-      if (config.params[key] === '') {
-        delete config.params[key];
-      }
-    }
-
+    // config.headers['Access-Control-Allow-Origin'] = '*';
+    // for (const key in config.params) {
+    //   if (config.params[key] === '') {
+    //     delete config.params[key];
+    //   }
+    // }
+    // console.log(`*****START 1af0ba ${Math.random().toString(32)} config*****\n`,
+    //   JSON.stringify(config),
+    //   '\n***** END ****'
+    // );
     return config;
   },
   async (err) => {
     console.error(err);
-    // TODO promote error
     return Promise.reject(err);
   }
 );
 
-type TUseApiPrams<T> = {
-  method: 'post' | 'get' | 'put' | 'delete';
-  url: string;
+type TUseApiOptionsPrams<T> = {
+  withToken?: boolean;
   delayMs?: number;
   mockData?: object | T;
   isGlobalLoading?: boolean;
@@ -63,13 +52,21 @@ export type TUseApi<T> = {
   error: unknown;
 };
 
-const useApi = <T,>({
-  method,
-  url,
-  isGlobalLoading,
-  config = {},
-  parse,
-}: TUseApiPrams<T>): TUseApi<T> => {
+const useApi = <T,>(
+  method: 'post' | 'get' | 'put' | 'delete',
+  url: string,
+  options: TUseApiOptionsPrams<T> = {}
+): TUseApi<T> => {
+  const config = options.config || {};
+
+  if (options.withToken) {
+    const accessToken = localStorage.getItem('accessToken');
+    config.headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    config.headers['Authorization'] = 'Bearer ' + accessToken;
+  }
+
   const globalSpinnerStore = useGlobalSpinnerStore();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -83,7 +80,7 @@ const useApi = <T,>({
   const handleLoading = (isLoading: boolean) => {
     setLoading(isLoading);
 
-    if (!isGlobalLoading) {
+    if (!options.isGlobalLoading) {
       return;
     }
 
@@ -113,10 +110,14 @@ const useApi = <T,>({
         tmpResponse = await axios[method]<T>(url, payload, config);
       }
 
-      if (parse && tmpResponse) {
-        tmpResponse.data = parse(tmpResponse.data);
+      if (options.parse && tmpResponse) {
+        tmpResponse.data = options.parse(tmpResponse.data);
       }
-
+      console.log(
+        `*****START d434d4 ${Math.random().toString(32)} tmpResponse*****\n`,
+        JSON.stringify(tmpResponse),
+        '\n***** END ****'
+      );
       setResponse(tmpResponse);
     } catch (e: unknown) {
       if (e instanceof AxiosError) {

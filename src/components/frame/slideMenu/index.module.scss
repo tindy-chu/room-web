@@ -2,17 +2,21 @@
 
 .container {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
   width: $leftWidth;
-  z-index: 1;
   transition: all 0.3s ease-in;
   transform: translateX(-$leftWidth);
   border-right: var(--color-border-primary);
   &.active {
     transform: unset;
   }
+}
+
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: blue;
+  overflow: hidden;
 }
 
 .headerContent {

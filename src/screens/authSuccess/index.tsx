@@ -10,9 +10,8 @@ export default function AuthResult() {
     const queries = new URLSearchParams(location.search);
     const accessToken = queries.get('access_token');
     const refreshToken = queries.get('refresh_token');
-    const email = queries.get('email');
 
-    if (!accessToken || !refreshToken || !email) {
+    if (!accessToken || !refreshToken) {
       toast.error('Ops! Occurring error. Please try again later.');
       navigate('/login');
       return;
